@@ -1,3 +1,38 @@
+
+// 处理window.onload 添加多个 函数
+function addLoadEvent(func){
+	var oldonload=window.onload;
+	if(typeof window.onload !="function"){
+	window.onload=func;
+	}else{
+	window.onload=function(){
+		oldonload();
+		func();
+		}
+	}
+}
+
+window.onload=addLoadEvent(prepareGallery);
+
+
+
+function prepareGallery(){
+	if(!document.getElementByTagName) return false;
+	if(!document.getElementById("imagegallery")) return false;
+	var gallery=document.getElementById("imagegallery");
+	var links=gallery.getElementsByTagName("a");
+	for(var i=0;i<links.length;i++){
+	links[i].onclick=function(){
+		showPic(this);
+		return false;
+		}
+	}
+
+
+}
+
+
+
 function showPic(whichpic){
 			
 	var source=whichpic.getAttribute("href");

@@ -27,3 +27,16 @@ function showHref(){
 //if(document.getElementById){
 //	alert("document.getElementById is supported");
 //}
+//------------------------- begin chapter 7
+
+function insertParagraph(text){
+  var str="<p>";
+  str+=text;
+  str+="</p>";
+  document.write(str);
+}
+
+
+
+
+

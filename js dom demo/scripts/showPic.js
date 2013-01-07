@@ -12,19 +12,19 @@ function addLoadEvent(func){
 	}
 }
 
-window.onload=addLoadEvent(prepareGallery);
+addLoadEvent(prepareGallery);
+
 
 
 
 function prepareGallery(){
-	if(!document.getElementByTagName) return false;
+	if(!document.getElementsByTagName) return false;
 	if(!document.getElementById("imagegallery")) return false;
 	var gallery=document.getElementById("imagegallery");
 	var links=gallery.getElementsByTagName("a");
 	for(var i=0;i<links.length;i++){
 	links[i].onclick=function(){
-		showPic(this);
-		return false;
+		return showPic(this);		 
 		}
 	}
 
@@ -36,19 +36,23 @@ function prepareGallery(){
 function showPic(whichpic){
 			
 	var source=whichpic.getAttribute("href");
+	if(!document.getElementById("placeholder")) return true;
 	var placeholder=document.getElementById("placeholder");
+	//if(placeholder.nodeName !="IMG") return true;
 	placeholder.setAttribute("src",source);
 	//test commit
 	 var titletext=whichpic.getAttribute("title");
 	 var description=document.getElementById("description");
 	 //alert(description.childNodes[0].nodeValue);
 	description.firstChild.nodeValue=titletext;
+	return false;
 	
 }
-//window.onload=countBodyChildren;
+
 function countBodyChildren(){
 	var body_element=document.getElementsByTagName("body")[0];
 //	alert("the count of body childElement is "+body_element.childNodes.length);
 	alert(body_element.nodeType);
 
 }
+

@@ -21,9 +21,9 @@ function showHref(){
 }
 
 //向css学习
-window.onload=showHref;
+//window.onload=showHref;
 
 //检测对象、方法是否存在--对象检测技术
-if(document.getElementById){
-	alert("document.getElementById is supported");
-}
+//if(document.getElementById){
+//	alert("document.getElementById is supported");
+//}

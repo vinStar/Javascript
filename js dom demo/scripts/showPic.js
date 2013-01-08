@@ -11,10 +11,35 @@ function addLoadEvent(func){
 		}
 	}
 }
+// 自定义 insertAfter 函数
+function insertAfter(newElement,targetElement){
+  var parent = targetElement.parentNode;
+  if(parent.lastChild == targetElement){
+     parent.appendChild(newElement);
+  } else {
+     parent.insertBefore(newElement,targetElement.nextSibling);
+  }
+}
 
-addLoadEvent(prepareGallery);
 
+function preparePlaceholder(){
 
+  if(!document.createElement) return false;
+  if(!document.createTextNode) return false;
+
+  var placeholder = document.createElement("img");
+  placeholder.setAttribute("id","placeholder");
+  placeholder.setAttribute("src","images/placeholder.jpg");
+  placeholder.setAttribute("alt","my image gallery");
+  var description = document.createElement("p");
+  description.setAttribute("id","description");
+  var desctext = document.createTextNode("Choose an image");
+  description.appendChild(desctext);
+  var gallery = document.getElementById("imagegallery");
+  insertAfter(placeholder,gallery);
+  insertAfter(description,placeholder);
+
+}
 
 
 function prepareGallery(){
@@ -27,7 +52,6 @@ function prepareGallery(){
 		return showPic(this);		 
 		}
 	}
-
 
 }
 
@@ -55,4 +79,34 @@ function countBodyChildren(){
 	alert(body_element.nodeType);
 
 }
+
+
+
+
+addLoadEvent(preparePlaceholder);
+addLoadEvent(prepareGallery);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

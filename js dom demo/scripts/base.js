@@ -21,3 +21,15 @@ function insertAfter(newElement,targetElement){
   }
 
 }
+
+// ×·¼ÓÑùÊ½
+function addClass(element,value){
+  if(!element.calssName){
+    element.className=value;
+  }else{
+    var newClassName=element.className;
+    newClassName+=" ";
+    newClassName+= value;
+    element.className=newClassName;
+  }
+}

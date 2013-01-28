@@ -69,6 +69,52 @@ window.onload=function(){
   
 }
 
+// 点击label为对应的元素获取焦点
+function focusLabels(){
+
+  if(!document.getElementsByTagName) return false;
+  var labels = document.getElementsByTagName("label");
+  for(var i=0;i<labels.length;i++){
+    if(!labels[i].getAttribute("for")) continue;
+    labels[i].onclick = function(){
+       var id= this.getAttribute("for");
+       if(!document.getElementById(id)) return false;
+       var element = document.getElementById(id);
+       element.focus();
+    }     
+  }
+}
+
+//文本框默认值控制
+function resetFields(whichform){
+  for(var i=0; i<whichform.elements.length;i++){
+     var element = whichform.elements[i];
+     if(element.type =="submit") continue;
+     if(!element.defaultValue) continue;
+     element.onfocus = function(){
+       if(this.value == this.defaultValue){
+         this.value="";
+       }
+     }
+     element.onblur = function(){
+       if(this.value == ""){
+         this.value = this.defaultValue;
+       }
+     }
+  }
+}
+// 遍历form 调用 resetFields
+function prepareForms(){
+  for(var i=0;i<document.forms.length;i++){
+  var thisform = document.forms[i];
+  resetFields(thisform);
+  }
+}
+
+addLoadEvent(focusLabels);
+addLoadEvent(prepareForms);
+//alert(window.onload);
+
 
 
 

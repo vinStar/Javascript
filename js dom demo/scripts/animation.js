@@ -30,16 +30,20 @@ function moveElement(elementID,final_x,final_y,interval){
   }
 
   if(xpos < final_x ){
-    xpos++;
+    var dist = Math.cell((final_x - xpos)/10);
+    xpos+=dist;
   }
   if(xpos > final_x ){
-    xpos--;
+    var dist = Math.cell((xpos - final_x)/10);
+    xpos-=dist;
   }
   if(ypos < final_y){
-    ypos++;
+    var dist = Math.cell((final_y - ypos)/10);
+    ypos+=dist;
   }
   if(ypos > final_y){
-    ypos--;
+    var dist = Math.cell(( ypos - final_y)/10);
+    ypos-=dist;
   }
 
   elem.style.left = xpos + "px";
@@ -49,3 +53,24 @@ function moveElement(elementID,final_x,final_y,interval){
   movement = setTimeout(repeat,interval);
   
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

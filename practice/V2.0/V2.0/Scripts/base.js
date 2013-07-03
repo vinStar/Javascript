@@ -1,4 +1,4 @@
- //ÕËºÅÏÂÀ­account popuu menu
+ï»¿ //è´¦å·ä¸‹æ‹‰account popuu menu
 function account(){
 	var account=document.getElementById("account_info_nav");
 	account.onmouseover=function(){
@@ -35,40 +35,47 @@ function swithListDetail(){
 	}
 }
 
-//ÌõÎÆ
+//æ¡çº¹
 function stripeTable(){
 	var item = document.getElementsByTagName("tr");
 	var odd=true;
-	//Ğü¸¡
+
+	//æ‚¬æµ®
 	for(var i=0;i<item.length;i++){
 
 		if(item[i].className=="tr_detail") continue;
-		var oldClass=item[i].className;
-		if(i>0){
-			item[i].onmouseover=function(){
-				if(this.className)this.className+=" hover";
-			}
-			item[i].onmouseover=function(){
-				if(this.className)this.className=oldClass;
-			}
-		}
+
 		if(odd){
 			item[i].className+=" odd";
 			odd=false;
 		}else{
 			odd=true;
 		}
+
+		
+		var oldClass=item[i].className;
+		if(i>0){
+			item[i].onmouseover=function(){
+				if(this.className)this.className+=" hover";
+			}
+			(function(o){
+				item[i].onmouseover=function(){
+					if(this.className)this.className=o;
+				};
+			})(oldClass);
+		}
+		
 	}
 }
 
  
-//É¾³ıÄ¬ÈÏÖµ
+//åˆ é™¤é»˜è®¤å€¼
 function delInfo(obj){
 if(obj.getAttribute("info")==obj.value){
 obj.value="";
 }
 }
-//Ìí¼ÓÄ¬ÈÏÖµ
+//æ·»åŠ é»˜è®¤å€¼
 function addInfo(obj){
 if(obj.value.trim()==""){
    obj.value=obj.getAttribute("info");

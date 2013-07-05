@@ -57,9 +57,9 @@ function stripeTable(){
 		if(i>0){
 			item[i].onmouseover=function(){
 				if(this.className)this.className+=" hover";
-			}
+			};
 			(function(o){
-				item[i].onmouseover=function(){
+				item[i].onmouseout=function(){
 					if(this.className)this.className=o;
 				};
 			})(oldClass);
@@ -107,6 +107,22 @@ function $(eId){
 	return document.getElementById(eId);
 }
 
+
+function allCheck(){
+	var chk=$("AllCheck");
+	if(!chk) return;
+	var checkFlag=chk.checked;
+	chk.onclick=function(){		
+		var items = document.getElementsByTagName("input");
+		for(var i=0;i<items.length;i++){
+			if(items[i].type=="checkbox"&&items[i].id!="AllCheck"){
+				items[i].checked=checkFlag;
+			}
+		}
+	};
+}
+
 addLoadEvent(account);
 addLoadEvent(swithListDetail);
 addLoadEvent(stripeTable);
+addLoadEvent(allCheck);
